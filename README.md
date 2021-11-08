@@ -3,8 +3,8 @@
 Nama | NIM | Kelas
 --- | --- | --- 
 I Gede Arya Raditya P | 13520036 | K01 
-Hansel Valentino Tanoto | 13520046 | K01 
-Fitrah Ramadhani Nugroho | 13520030 | K01 
+Muhammad Garebaldhie Er Rahman | 13520029 | K01 
+Adiyansa Prasetya Wicaksana | 13520044 | K01 
 
 
 Nama | Link 

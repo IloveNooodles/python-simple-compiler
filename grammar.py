@@ -1,4 +1,4 @@
-RULE_DICT = {}
+ruleDict = {}
 
 def print_grammar(grammar):
 	for rule in grammar:
@@ -26,15 +26,15 @@ def read_grammar(grammar_file):
 
 def add_rule(rule):
  
-    global RULE_DICT
+    global ruleDict
 
-    if rule[0] not in RULE_DICT:
-        RULE_DICT[rule[0]] = []
-    RULE_DICT[rule[0]].append(rule[1:])
+    if rule[0] not in ruleDict:
+        ruleDict[rule[0]] = []
+    ruleDict[rule[0]].append(rule[1:])
 
 def convert_grammar(grammar):
 
-    global RULE_DICT
+    global ruleDict
 
     unit_productions, res = [], []
     index = 0
@@ -65,8 +65,8 @@ def convert_grammar(grammar):
 
     while unit_productions:
         rule = unit_productions.pop()
-        if rule[1] in RULE_DICT:
-            for item in RULE_DICT[rule[1]]:
+        if rule[1] in ruleDict:
+            for item in ruleDict[rule[1]]:
                 new_rule = [rule[0]] + item
                 if len(new_rule) > 2 or new_rule[1][0] == "'":
                     res.append(new_rule)

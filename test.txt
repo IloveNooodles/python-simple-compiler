@@ -1,0 +1,4 @@
+var123 = 1241241241
+_gare = garer13r13
+Gare = _gare123
+1234Gare = garegare.gare.gare()

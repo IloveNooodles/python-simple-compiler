@@ -1,10 +1,7 @@
-import re
-import sys
-import argparse
+from lib.grammar.cfgtocnf import readGrammarFile, convertGrammar
 from lib.tokenizer import createToken
-from parser import verdictCYK
-from lib.grammar.cfgtocnf import read_grammar, convert_grammar
-import os
+from lib.parser import verdictCYK
+import re, os, sys, argparse
 
 def bannerCompiler() :
   print()
@@ -31,9 +28,12 @@ if __name__ == "__main__":
 
   # Token & CNF
   token = createToken(args.file.name)
-  CNFgrammar = convert_grammar(read_grammar('grammar.txt'))
+  CNFgrammar = convertGrammar((readGrammarFile("lib/grammar/cnf.txt")))
+  print(token)
+  print(CNFgrammar)
 
   # Verdict
-  verdictCYK(token, CNFgrammar)
+  print(verdictCYK(token, CNFgrammar))
+  # verdictCYK(token, CNFgrammar)
 
      

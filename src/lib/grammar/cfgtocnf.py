@@ -53,7 +53,7 @@ def convertGrammar(grammar):
 
     # Proses cuma yang ada 1 non terminal di kanan
     while unitProductions:
-      rule = unitProductions.pop()
+      rule = unitProductions.pop() 
       if rule[1] in ruleDict:
         for item in ruleDict[rule[1]]:
           new_rule = [rule[0]] + item
@@ -77,4 +77,5 @@ def writeGrammar(grammar):
         file.write("\n")
     file.close()
 
-writeGrammar(convertGrammar((readGrammarFile("cfg.txt")))) 
+# if __name__ == "__main__":
+#   writeGrammar(convertGrammar((readGrammarFile("cfg.txt")))) 

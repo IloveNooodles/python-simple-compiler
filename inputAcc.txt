@@ -1,3 +1,0 @@
-def gare_bau(bau):
-    gareBau = "GARE BAU"
-    print(gareBau)

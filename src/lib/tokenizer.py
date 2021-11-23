@@ -2,9 +2,6 @@ import os
 import sys 
 import re
 
-# multLine1 = r'[\n]+[ \t]*\'\'\'[(?!(\'\'\'))\w\W]*\'\'\''
-# multLine2 = r'[\n]+[ \t]*\"\"\"[(?!(\"\"\"))\w\W]*\"\"\"'
-
 def lex(text, tokenExprs):
     pos = 0             # absolute position
     currPos = 1         # position in relative to line
@@ -17,25 +14,21 @@ def lex(text, tokenExprs):
             currPos = 1
 
         flag = None
+
+        # Finding the right token for every word
         for tokenExpr in tokenExprs:
             pattern, tag = tokenExpr    
-
-            # if line == 1:
-            #     if pattern == multLine1:
-            #         pattern = r'[^\w]*[ \t]*\'\'\'[(?!(\'\'\'))\w\W]*\'\'\''
-            #     elif pattern == multLine2:
-            #         pattern = r'[^\w]*[ \t]*\"\"\"[(?!(\"\"\"))\w\W]*\"\"\"'
 
             regex = re.compile(pattern)
             flag = regex.match(text, pos)
 
             if flag:
-                # texts = flag.group(0)
                 if tag:
                     token = tag
                     tokens.append(token)
                 break
 
+        # If the tag doen't match then there must be syntax error
         if not flag:
             print(f"\nSYNTAX ERROR\nIllegal character {text[pos]} at line {line} and column {currPos}")
             sys.exit(1)
@@ -46,7 +39,7 @@ def lex(text, tokenExprs):
     return tokens
 
 tokenExprs = [
-    # Not token
+    # misc
     (r'[ \t]+',                                      None),
     (r'#[^\n]*',                                     None),
     (r'[\n]+[ \t]*\'\'\'[(?!(\'\'\'))\w\W]*\'\'\'',  None),
@@ -143,12 +136,11 @@ def createToken(text):
 
     # Write file
     path = os.getcwd()
-    fileWrite = open(path + "/result/tokenResult.txt", 'w')
+    fileWrite = open(path + "/../result/tokenResult.txt", 'w')
     for token in tokenResult:
         fileWrite.write(str(token)+" ")
-        # print(token)
     fileWrite.close()
 
 if __name__ == "__main__":
     path = os.getcwd()
-    createToken(path + "/test/inputAcc.txt")
+    createToken(path + "/../test/inputReject.txt")

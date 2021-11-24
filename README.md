@@ -32,4 +32,4 @@ This Programs allows you to validate your python file and give verdict, whether 
 1. The program will read the file through the end of the file
 2. After read all the lines the program will transform all of the word into token
 3. After the token are created, we use CNF in the grammar to validate it
-4. If the token follows the rule of the CNF so the program valid if not, the program will fails and
+4. If the token follows the rule of the CNF. So whether the program is valid or not it will print the verdict!

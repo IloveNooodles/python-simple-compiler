@@ -73,27 +73,12 @@ def convertGrammar(grammar):
 def mapGrammar(grammar):
   lenGrammar = len(grammar)
   mp = {}
-  # for i in range(len(grammar)):
-  #   if grammar[i][0].lower() in terminal :
-  #     grammar[i][0] = grammar[i][0].upper()
-  #     grammar[i][0] += "_NT"
   for rule in grammar :
     mp[str(rule[0])] = []
   for rule in grammar :
     elm = []
     for idxRule in range(1, len(rule)) :
       apd = rule[idxRule]
-      # if apd[0].islower():
-      #   apd = apd[1:-1]
-      #   # apd = apd.lower()
-      #   # if apd in terminal :
-      #   #   apd = apd.upper()
-      #   #   apd += "_NT"
-      #   # else:
-      #   #   apd = apd.upper()
-      #   # print(apd)
-      #   apd = apd.upper()
-      #   apd += "_NT"
       elm.append(apd)
     mp[str(rule[0])].append(elm)
   return mp

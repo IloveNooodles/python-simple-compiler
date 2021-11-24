@@ -1,6 +1,6 @@
-from lib.grammar.cfgtocnf import readGrammarFile, convertGrammar
+from lib.grammar.cfgtocnf import readGrammarFile, convertGrammar, mapGrammar
 from lib.tokenizer import createToken
-from lib.parser import verdictCYK
+from lib.parser import cykParse
 import re, os, sys, argparse
 
 def bannerCompiler() :
@@ -17,23 +17,22 @@ def bannerCompiler() :
   print("                         /_/                     ")  
   print()
 
-if __name__ == "__main__":
+def verdict():
   # Argparse
   parser = argparse.ArgumentParser()
   parser.add_argument('file', type = argparse.FileType('r'))
   args = parser.parse_args()
 
-  # Banner
+  # Banner and verdict
   bannerCompiler()
-
+  print("======================VERDICT=========================")
+  print("Loading...")
+  
   # Token & CNF
   token = createToken(args.file.name)
-  CNFgrammar = convertGrammar((readGrammarFile("lib/grammar/cnf.txt")))
-  print(token)
-  print(CNFgrammar)
+  token = [x.lower() for x in token]
+  CNFgrammar = mapGrammar(convertGrammar((readGrammarFile("lib/grammar/cfg.txt"))))
+  cykParse(token, CNFgrammar)
 
-  # Verdict
-  print(verdictCYK(token, CNFgrammar))
-  # verdictCYK(token, CNFgrammar)
-
-     
+if __name__ == "__main__":
+  verdict()

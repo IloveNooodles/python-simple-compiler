@@ -1,3 +1,7 @@
+import keyword
+
+terminal = keyword.kwlist
+
 ruleDict = {}
 
 #Read txt
@@ -35,14 +39,15 @@ def convertGrammar(grammar):
     for rule in grammar:
       new_rules = []
       # buat yang cuma satu nonterminal/terminal di kanan
-      if len(rule) == 2 and rule[1][0] != "'":
+      if len(rule) == 2 and not rule[1][0].islower() :
         unitProductions.append(rule)
         addGrammarRule(rule)
         continue
       # Proses if lebih dari 3 nonterminalnya ini bakal di split jadi cuma 3 doang  
       while len(rule) > 3:
-        new_rules.append([f"{rule[0]}{str(idx)}", rule[1], rule[2]])
-        rule = [rule[0]] + [f"{rule[0]}{str(idx)}"] + rule[3:]
+        
+        new_rules.append([f"{rule[0]}{idx}", rule[1], rule[2]])
+        rule = [rule[0]] + [f"{rule[0]}{idx}"] + rule[3:]
         idx += 1
       if rule:
         addGrammarRule(rule)
@@ -58,13 +63,26 @@ def convertGrammar(grammar):
         for item in ruleDict[rule[1]]:
           new_rule = [rule[0]] + item
           # nonterminal dikanan bakal dirubah either kalo panjangnya 3 / ada terminal
-          if len(new_rule) > 2 or new_rule[1][0] == "'":
+          if len(new_rule) > 2 or new_rule[1][0].islower():
             res.append(new_rule)
           #Kalo cuma 2 tp dia bukan terminal masukin lg ke production ujungnya bakal dirubah jadi terminal
           else:
             unitProductions.append(new_rule)
           addGrammarRule(new_rule)
     return res
+
+def mapGrammar(grammar):
+  lenGrammar = len(grammar)
+  mp = {}
+  for rule in grammar :
+    mp[str(rule[0])] = []
+  for rule in grammar :
+    elm = []
+    for idxRule in range(1, len(rule)) :
+      apd = rule[idxRule]
+      elm.append(apd)
+    mp[str(rule[0])].append(elm)
+  return mp
 
 def writeGrammar(grammar):
     file = open('cnf.txt', 'w')
@@ -77,5 +95,5 @@ def writeGrammar(grammar):
         file.write("\n")
     file.close()
 
-# if __name__ == "__main__":
-#   writeGrammar(convertGrammar((readGrammarFile("cfg.txt")))) 
+if __name__ == "__main__":
+  writeGrammar(convertGrammar((readGrammarFile("cfg.txt")))) 

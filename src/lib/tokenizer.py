@@ -2,9 +2,6 @@ import os
 import sys 
 import re
 
-# multLine1 = r'[\n]+[ \t]*\'\'\'[(?!(\'\'\'))\w\W]*\'\'\''
-# multLine2 = r'[\n]+[ \t]*\"\"\"[(?!(\"\"\"))\w\W]*\"\"\"'
-
 def lex(text, tokenExprs):
     pos = 0             # absolute position
     currPos = 1         # position in relative to line
@@ -19,13 +16,7 @@ def lex(text, tokenExprs):
         flag = None
         for tokenExpr in tokenExprs:
             pattern, tag = tokenExpr    
-
-            # if line == 1:
-            #     if pattern == multLine1:
-            #         pattern = r'[^\w]*[ \t]*\'\'\'[(?!(\'\'\'))\w\W]*\'\'\''
-            #     elif pattern == multLine2:
-            #         pattern = r'[^\w]*[ \t]*\"\"\"[(?!(\"\"\"))\w\W]*\"\"\"'
-
+            
             regex = re.compile(pattern)
             flag = regex.match(text, pos)
 
@@ -127,10 +118,9 @@ tokenExprs = [
 
     # Exception for variable
     (r'[A-Za-z_][A-Za-z0-9_]*', "VAR"),
-]
+  ]
 
 def createToken(text):
-
     # Read file
     file = open(text, encoding="utf8")
     characters = file.read()

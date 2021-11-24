@@ -31,6 +31,7 @@ def verdict():
   # Token & CNF
   token = createToken(args.file.name)
   token = [x.lower() for x in token]
+  print(token)
   CNFgrammar = mapGrammar(convertGrammar((readGrammarFile("lib/grammar/cfg.txt"))))
   cykParse(token, CNFgrammar)
 

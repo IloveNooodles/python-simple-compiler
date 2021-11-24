@@ -15,11 +15,11 @@ def cykParse(w, R):
               if len(rhs) == 2 and rhs[0] in T[i][k] and rhs[1] in T[k + 1][j]:
                 T[i][j].add(lhs)
   
-    # print(T[0][n-1])
+    print(T[0][n-1])
     if 'S' in T[0][n-1]:
-        print("True")
+        print("Berhasil di compile yayyy :))")
     else:
-        print("False")
+        print("Yahh gagal compile :(")
       
 if __name__ == "__main__":
   pass

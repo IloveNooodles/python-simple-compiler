@@ -1,29 +1,31 @@
-# TUBES-TBFO
+# Simple Python Compiler
 
 ## Member List
 
-| Nama                           | NIM      | Kelas |
-| ------------------------------ | -------- | ----- |
-| I Gede Arya Raditya P          | 13520036 | K01   |
-| Muhammad Garebaldhie Er Rahman | 13520029 | K01   |
-| Adiyansa Prasetya Wicaksana    | 13520044 | K01   |
+| Name                            | NIM      | Class |
+| ------------------------------- | -------- | ----- |
+| I Gede Arya Raditya Parameswara | 13520036 | K01   |
+| Muhammad Garebaldhie Er Rahman  | 13520029 | K01   |
+| Adiyansa Prasetya Wicaksana     | 13520044 | K01   |
 
-## Spesification
+## Specification
 
-| Nama               | Link                                                                                                                   |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| Spesifikasi        | [Link Spesifikasi](https://docs.google.com/document/d/1Fd8wLOP_GzJ66atpw1yK1_S1dLCFQcKFTgnePFHql7Y/edit)               |
-| Pembagian Kelompok | [Spreadsheet Kelompok](https://docs.google.com/spreadsheets/d/10FTPI8DVEaKu22H90p2-twzi4ZX4vC1FAG4c4aJfvgw/edit#gid=0) |
+| Name          | Link                                                                                                                |
+| ------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Specification | [Specification Link](https://docs.google.com/document/d/1Fd8wLOP_GzJ66atpw1yK1_S1dLCFQcKFTgnePFHql7Y/edit)          |
+| Groups        | [Group Spreadsheet](https://docs.google.com/spreadsheets/d/10FTPI8DVEaKu22H90p2-twzi4ZX4vC1FAG4c4aJfvgw/edit#gid=0) |
 
 ## Features
 
-This Programs allows you to validate your python file and give verdict, wheter it accepted or not and give the error message on what line the programs fails to run.
+This Programs allows you to validate your python file and give verdict, whether it accepted or not the program will print the result into your terminal.
 
 ## How to use
 
 1. Make sure you have python installed in your computer
-2. Create file that you want to validate and put it into `test` folder
-3. Run main.py with the argument `python main.py ../test/<filename.py>` and you will get the verdict of your file!
+2. `git clone https://github.com/gedearyarp/TUBES-TBFO.git`
+3. Create file that you want to validate and put it into `test` folder
+4. `cd src`
+5. Run main.py with the argument `python main.py test/<filename.py>` and you will get the verdict of your file!
 
 ## How it works?
 

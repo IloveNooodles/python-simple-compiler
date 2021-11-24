@@ -35,7 +35,7 @@ def convertGrammar(grammar):
     for rule in grammar:
       new_rules = []
       # buat yang cuma satu nonterminal/terminal di kanan
-      if len(rule) == 2 and rule[1][0] != "'":
+      if len(rule) == 2 and not rule[1][0].islower() :
         unitProductions.append(rule)
         addGrammarRule(rule)
         continue
@@ -58,7 +58,7 @@ def convertGrammar(grammar):
         for item in ruleDict[rule[1]]:
           new_rule = [rule[0]] + item
           # nonterminal dikanan bakal dirubah either kalo panjangnya 3 / ada terminal
-          if len(new_rule) > 2 or new_rule[1][0] == "'":
+          if len(new_rule) > 2 or new_rule[1][0].islower():
             res.append(new_rule)
           #Kalo cuma 2 tp dia bukan terminal masukin lg ke production ujungnya bakal dirubah jadi terminal
           else:
@@ -78,4 +78,4 @@ def writeGrammar(grammar):
     file.close()
 
 # if __name__ == "__main__":
-#   writeGrammar(convertGrammar((readGrammarFile("cfg.txt")))) 
+writeGrammar(convertGrammar((readGrammarFile("cfg.txt")))) 

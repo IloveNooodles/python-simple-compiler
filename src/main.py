@@ -14,7 +14,7 @@ def bannerCompiler() :
   print("      / /   / __ \/ __ `__ \/ __ \/ / / _ \/ ___/")                                                                  
   print("     / /___/ /_/ / / / / / / /_/ / / /  __/ /    ") 
   print("     \____/\____/_/ /_/ /_/ .___/_/_/\___/_/     ") 
-  print("                         /_/                     ")  
+  print("      Ayam Bersih Berkah /_/ Production          ")  
   print()
 
 def verdict():
@@ -25,15 +25,20 @@ def verdict():
 
   # Banner and verdict
   bannerCompiler()
-  print("======================VERDICT=========================")
-  print("Loading...")
+  print("\nLoading...")
+  print("Checking your codes...")
+  print("File name: " + str(args.file.name))
+  print()
   
   # Token & CNF
   token = createToken(args.file.name)
   token = [x.lower() for x in token]
-  print(token)
   CNFgrammar = mapGrammar(convertGrammar((readGrammarFile("lib/grammar/cfg.txt"))))
+  print("======================VERDICT=========================")
+  print()
   cykParse(token, CNFgrammar)
+  print()
+  print("======================================================")
 
 if __name__ == "__main__":
   verdict()

@@ -37,7 +37,8 @@ def cykParse(w, R):
   
     # If word can be formed by rules 
     # of given grammar
-    if len(T[0][n-1]) != 0:
+    print(T[0][n-1])
+    if 'S' in T[0][n-1]:
         print("True")
     else:
         print("False")

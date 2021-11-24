@@ -45,8 +45,9 @@ def convertGrammar(grammar):
         continue
       # Proses if lebih dari 3 nonterminalnya ini bakal di split jadi cuma 3 doang  
       while len(rule) > 3:
-        new_rules.append([f"{rule[0]}{str(idx)}", rule[1], rule[2]])
-        rule = [rule[0]] + [f"{rule[0]}{str(idx)}"] + rule[3:]
+        
+        new_rules.append([f"{rule[0]}{idx}", rule[1], rule[2]])
+        rule = [rule[0]] + [f"{rule[0]}{idx}"] + rule[3:]
         idx += 1
       if rule:
         addGrammarRule(rule)

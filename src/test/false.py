@@ -1,1 +1,5 @@
-y = 1 if 2 else 3
+def a():
+  if 1:
+    print(2)
+  else:
+    print(2)

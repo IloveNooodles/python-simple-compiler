@@ -32,10 +32,12 @@ if __name__ == "__main__":
   token = [x.lower() for x in token]
   print(token)
   CNFgrammar = mapGrammar(convertGrammar((readGrammarFile("lib/grammar/cfg.txt"))))
-  # for key, item in CNFgrammar.items():
-  #   if 'LB' in key:
-  #     print(key, item)
+  # print(CNFgrammar['S'])
+  print(CNFgrammar['ASSIGN'])
   cykParse(token, CNFgrammar)
+  # for key, item in CNFgrammar.items():
+  #   if 'S' in key:
+  #     print(key, item)
   # # print(CNFgrammar)
       
   # # vdc = verdictCYK(token, CNFgrammar)

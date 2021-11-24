@@ -82,6 +82,7 @@ tokenExprs = [
     (r'\,',             "COMMA"),
     (r'\w+[.]\w+',      "DOTBETWEEN"),
     (r'\.',             "DOT"),
+    (r'\%',             "MOD"),
 
     # Type
     (r'[\+\-]?[0-9]*\.[0-9]+',  "INT"),

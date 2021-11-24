@@ -1,3 +1,7 @@
+import keyword
+
+terminal = keyword.kwlist
+
 ruleDict = {}
 
 #Read txt
@@ -35,7 +39,7 @@ def convertGrammar(grammar):
     for rule in grammar:
       new_rules = []
       # buat yang cuma satu nonterminal/terminal di kanan
-      if len(rule) == 2 and rule[1][0] != "'":
+      if len(rule) == 2 and not rule[1][0].islower() :
         unitProductions.append(rule)
         addGrammarRule(rule)
         continue
@@ -58,7 +62,7 @@ def convertGrammar(grammar):
         for item in ruleDict[rule[1]]:
           new_rule = [rule[0]] + item
           # nonterminal dikanan bakal dirubah either kalo panjangnya 3 / ada terminal
-          if len(new_rule) > 2 or new_rule[1][0] == "'":
+          if len(new_rule) > 2 or new_rule[1][0].islower():
             res.append(new_rule)
           #Kalo cuma 2 tp dia bukan terminal masukin lg ke production ujungnya bakal dirubah jadi terminal
           else:
@@ -67,33 +71,31 @@ def convertGrammar(grammar):
     return res
 
 def mapGrammar(grammar):
-  terminalll = ["if", "elif", "else", "for", "in", "while", "continue", "pass", "break", "class", "def", "return", "as", "import", "from", "raise", "and", "or", "not", "is", "True", "False", "None", "with"]
   lenGrammar = len(grammar)
   mp = {}
-  for i in range(len(grammar)):
-    if grammar[i][0].lower() in terminalll :
-      grammar[i][0] = grammar[i][0].upper()
-      grammar[i][0] += "_NT"
+  # for i in range(len(grammar)):
+  #   if grammar[i][0].lower() in terminal :
+  #     grammar[i][0] = grammar[i][0].upper()
+  #     grammar[i][0] += "_NT"
   for rule in grammar :
     mp[str(rule[0])] = []
   for rule in grammar :
     elm = []
     for idxRule in range(1, len(rule)) :
       apd = rule[idxRule]
-      if apd[0] == "'" :
-        apd = apd[1:-1]
-        # apd = apd.lower()
-        # if apd in terminalll :
-        #   apd = apd.upper()
-        #   apd += "_NT"
-        # else:
-        #   apd = apd.upper()
-        # print(apd)
-        apd = apd.upper()
-        apd += "_NT"
+      # if apd[0].islower():
+      #   apd = apd[1:-1]
+      #   # apd = apd.lower()
+      #   # if apd in terminal :
+      #   #   apd = apd.upper()
+      #   #   apd += "_NT"
+      #   # else:
+      #   #   apd = apd.upper()
+      #   # print(apd)
+      #   apd = apd.upper()
+      #   apd += "_NT"
       elm.append(apd)
     mp[str(rule[0])].append(elm)
-  mp['FORMAT'] = [["FORMAT"]]
   return mp
 
 def writeGrammar(grammar):
@@ -107,5 +109,5 @@ def writeGrammar(grammar):
         file.write("\n")
     file.close()
 
-# if __name__ == "__main__":
-#   writeGrammar(convertGrammar((readGrammarFile("cfg.txt")))) 
+if __name__ == "__main__":
+  writeGrammar(convertGrammar((readGrammarFile("cfg.txt")))) 

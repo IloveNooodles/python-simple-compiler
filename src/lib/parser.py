@@ -75,6 +75,7 @@ def CYKParser(token, CNFgrammar):
                             c = mp[e[1]]
                             if (dp[p][s][b] and dp[l - p][s + p][c]):
                                 dp[l][s][a] = True
+    print(dp[n][1][1])
     if (dp[n][1][1]):
         print("Accepted")
     else :

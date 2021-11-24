@@ -66,6 +66,36 @@ def convertGrammar(grammar):
           addGrammarRule(new_rule)
     return res
 
+def mapGrammar(grammar):
+  terminalll = ["if", "elif", "else", "for", "in", "while", "continue", "pass", "break", "class", "def", "return", "as", "import", "from", "raise", "and", "or", "not", "is", "True", "False", "None", "with"]
+  lenGrammar = len(grammar)
+  mp = {}
+  for i in range(len(grammar)):
+    if grammar[i][0].lower() in terminalll :
+      grammar[i][0] = grammar[i][0].upper()
+      grammar[i][0] += "_NT"
+  for rule in grammar :
+    mp[str(rule[0])] = []
+  for rule in grammar :
+    elm = []
+    for idxRule in range(1, len(rule)) :
+      apd = rule[idxRule]
+      if apd[0] == "'" :
+        apd = apd[1:-1]
+        # apd = apd.lower()
+        # if apd in terminalll :
+        #   apd = apd.upper()
+        #   apd += "_NT"
+        # else:
+        #   apd = apd.upper()
+        # print(apd)
+        apd = apd.upper()
+        apd += "_NT"
+      elm.append(apd)
+    mp[str(rule[0])].append(elm)
+  mp['FORMAT'] = [["FORMAT"]]
+  return mp
+
 def writeGrammar(grammar):
     file = open('cnf.txt', 'w')
     for rule in grammar:
